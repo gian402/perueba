@@ -8,11 +8,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.prueba1.ui.theme.AppTheme
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()  // Splash nativo con logo NovaTec
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme {
@@ -24,14 +26,11 @@ class MainActivity : ComponentActivity() {
 
                     LaunchedEffect(Unit) {
                         delay(2000)
-                        screen = "logo"
-                        delay(2000)
                         screen = "login"
                     }
 
                     when (screen) {
                         "circles" -> ColorfulCirclesScreen()
-                        "logo"    -> SplashScreen()
                         "login"   -> LoginScreen()
                     }
                 }
