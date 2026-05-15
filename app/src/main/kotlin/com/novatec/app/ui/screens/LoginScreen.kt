@@ -2,6 +2,7 @@ package com.novatec.app.ui.screens
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -26,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.novatec.app.R
 import com.novatec.app.ui.theme.*
+import kotlinx.coroutines.delay
 
 @Composable
 fun LoginScreen() {
@@ -301,21 +303,21 @@ fun PasswordInputField(password: String, onPasswordChange: (String) -> Unit) {
 
 @Composable
 fun ForgotPasswordLink() {
-    TextButton(
-        onClick = { /* TODO: Navigate to forgot password */ },
-        modifier = Modifier
-            .align(Alignment.End)
-            .padding(top = 8.dp)
-    ) {
-        Text(
-            text = "¿Olvidaste tu contraseña?",
-            style = TextStyle(
-                fontFamily = InterFamily,
-                fontWeight = FontWeight.Medium,
-                fontSize = 13.sp,
-                color = Purple
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+        TextButton(
+            onClick = { /* TODO: Navigate to forgot password */ },
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Text(
+                text = "¿Olvidaste tu contraseña?",
+                style = TextStyle(
+                    fontFamily = InterFamily,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 13.sp,
+                    color = Purple
+                )
             )
-        )
+        }
     }
 }
 
