@@ -1,147 +1,79 @@
 package com.novatec.app.ui.screens
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.foundation.Image
-import com.novatec.app.R
-import com.novatec.app.ui.theme.*
 import kotlinx.coroutines.delay
 
+val CyanCircle = Color(0xFF00D4FF)
+val PurpleCircle = Color(0xFF7B2FBE)
+val DarkPurple = Color(0xFF3D1A6E)
+
 @Composable
-fun SplashScreen(onNavigateToLogin: () -> Unit) {
-    var logoScale by remember { mutableStateOf(0.5f) }
-    var logoAlpha by remember { mutableStateOf(0f) }
-    var titleAlpha by remember { mutableStateOf(0f) }
-    var shouldNavigate by remember { mutableStateOf(false) }
-
+fun SplashScreen(onFinished: () -> Unit) {
     LaunchedEffect(Unit) {
-        // Animar logo
-        logoAlpha = 1f
-        logoScale = 1f
-        delay(500)
-        
-        // Mostrar título
-        titleAlpha = 1f
-        delay(2500)
-        
-        // Navegar a login
-        shouldNavigate = true
-    }
-
-    if (shouldNavigate) {
-        onNavigateToLogin()
+        delay(2000)
+        onFinished()
     }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
-        contentAlignment = Alignment.Center
+            .background(DarkPurple)
     ) {
-        // Fondo decorativo con elipses
-        SplashBackgroundDecorations()
-
-        // Contenido del splash
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            // Logo animado
-            Image(
-                painter = painterResource(id = R.drawable.novatec_logo),
-                contentDescription = "NovaTec Logo",
-                modifier = Modifier
-                    .size(260.dp)
-                    .graphicsLayer(
-                        scaleX = logoScale,
-                        scaleY = logoScale,
-                        alpha = logoAlpha
-                    )
-                    .animateContentSize(animationSpec = tween(1200)),
-                contentScale = ContentScale.Fit
-            )
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            // Texto NovaTec
-            Text(
-                text = "NovaTec",
-                style = TextStyle(
-                    fontFamily = InterFamily,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 32.sp,
-                    color = Cyan
-                ),
-                modifier = Modifier
-                    .graphicsLayer(alpha = titleAlpha)
-                    .animateContentSize(animationSpec = tween(1000))
-            )
-
-            Text(
-                text = "App de Gestión",
-                style = TextStyle(
-                    fontFamily = InterFamily,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 16.sp,
-                    color = Dark
-                ),
-                modifier = Modifier
-                    .graphicsLayer(alpha = titleAlpha)
-                    .animateContentSize(animationSpec = tween(1000))
-            )
-        }
-    }
-}
-
-@Composable
-fun SplashBackgroundDecorations() {
-    Box(modifier = Modifier.fillMaxSize()) {
-        // Elipse superior derecha
-        Image(
-            painter = painterResource(id = R.drawable.elipse_2),
-            contentDescription = null,
+        // Círculo cyan top-center (grande)
+        Box(
             modifier = Modifier
-                .size(280.dp)
-                .align(Alignment.TopEnd)
-                .graphicsLayer(alpha = 0.7f),
-            contentScale = ContentScale.Crop
-        )
-
-        // Elipse inferior izquierda
-        Image(
-            painter = painterResource(id = R.drawable.elipse_1),
-            contentDescription = null,
-            modifier = Modifier
+                .offset(x = 30.dp, y = (-60).dp)
                 .size(260.dp)
-                .align(Alignment.BottomStart)
-                .graphicsLayer(alpha = 0.6f),
-            contentScale = ContentScale.Crop
+                .clip(CircleShape)
+                .background(CyanCircle)
         )
-
-        // Elipse inferior derecha
-        Image(
-            painter = painterResource(id = R.drawable.elipse_2),
-            contentDescription = null,
+        // Círculo púrpura medio-izquierda
+        Box(
             modifier = Modifier
+                .offset(x = (-40).dp, y = 180.dp)
+                .size(240.dp)
+                .clip(CircleShape)
+                .background(Color(0xFF9B4FD0))
+        )
+        // Círculo púrpura medio-derecha
+        Box(
+            modifier = Modifier
+                .offset(x = 160.dp, y = 200.dp)
+                .size(220.dp)
+                .clip(CircleShape)
+                .background(Color(0xFF7B2FBE))
+        )
+        // Círculo cyan inferior-centro
+        Box(
+            modifier = Modifier
+                .offset(x = 20.dp, y = 430.dp)
+                .size(260.dp)
+                .clip(CircleShape)
+                .background(CyanCircle)
+        )
+        // Círculo púrpura inferior-izquierda
+        Box(
+            modifier = Modifier
+                .offset(x = (-30).dp, y = 600.dp)
                 .size(200.dp)
-                .align(Alignment.BottomEnd)
-                .graphicsLayer(alpha = 0.5f),
-            contentScale = ContentScale.Crop
+                .clip(CircleShape)
+                .background(Color(0xFF9B4FD0))
+        )
+        // Círculo cyan inferior-derecha
+        Box(
+            modifier = Modifier
+                .offset(x = 200.dp, y = 580.dp)
+                .size(180.dp)
+                .clip(CircleShape)
+                .background(CyanCircle)
         )
     }
 }
