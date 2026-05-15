@@ -1,0 +1,19 @@
+R_DEF: Internal format may change without notice
+local
+color border_gray
+color dark
+color light_gray
+color primary_cyan
+color primary_purple
+color text_light
+color white
+drawable elipse_1
+drawable elipse_2
+drawable novatec_logo
+font inter_regular
+string app_name
+string button_sign_in
+string label_email
+string label_password
+string link_forgot_password
+style Theme.NovaTecApp
