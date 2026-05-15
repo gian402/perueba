@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Prueba1</string>
+    <string name="logo_content_description">NovaTec Logo</string>
+    <string name="email_label">Correo</string>
+    <string name="email_placeholder">Value</string>
+    <string name="password_label">Contraseña</string>
+    <string name="password_placeholder">Value</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="forgot_password">Olvidaste tu contraseña?</string>
+    <string name="unknown_destination">Unknown destination</string>
+</resources>

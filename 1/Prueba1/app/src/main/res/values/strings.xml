@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Prueba1</string>
+    <string name="company_logo_description">Company logo</string>
+    <string name="unknown_destination">Unknown destination</string>
+</resources>
